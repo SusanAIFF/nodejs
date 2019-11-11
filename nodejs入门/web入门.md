@@ -52,3 +52,49 @@ var server = http.createServer(onRequest);
 
 server.listen(3000, '127.0.0.1');
 console.log('Server started on localhost port 3000');
+
+
+
+第十二节：模块化思想
+#server.js
+var http = require('http');
+var fs = require('fs');
+
+function startServer() {
+    var onRequest = function(request, response) {
+        console.log('Request received');
+        response.writeHead(200, {'Content-Type': 'application/json'});
+        var myJson = {
+            name: "hfadk",
+            job: "coder",
+            age: 21
+        };
+        response.end(JSON.stringify(myJson));  
+    }
+    var server = http.createServer(onRequest);
+    server.listen(3000, '127.0.0.1');
+    console.log('Server started on localhost port 3000');
+}
+
+exports.startServer = startServer;
+
+#app.js
+var server = require('./server');
+server.startServer();
+
+
+
+第十二节：路由，请求不同的资源
+var http = require('http');
+var fs = require('fs');
+
+function startServer() {
+    var onRequest = function(request, response) {
+        console.log('Request received!' + request.url);
+        if (request.url === '/' || request.url === '/home') {
+            response.writeHead(200, { 'Content-Type': 'text/html' });
+            fs.createReadStream(__dirname + '/index.html', 'utf8').pipe(response);          //__
+        }
+        
+    }
+}
