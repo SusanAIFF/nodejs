@@ -76,7 +76,7 @@ function startServer() {
     console.log('Server started on localhost port 3000');
 }
 
-exports.startServer = startServer;
+module.exports.startServer = startServer;
 
 #app.js
 var server = require('./server');
@@ -84,7 +84,7 @@ server.startServer();
 
 
 
-第十二节：路由，请求不同的资源
+第十二/三节：路由，请求不同的资源
 var http = require('http');
 var fs = require('fs');
 
@@ -98,3 +98,7 @@ function startServer() {
         
     }
 }
+
+
+
+
