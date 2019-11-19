@@ -2,6 +2,7 @@ var express = require('express');
 
 var app = express();
 
+//‘/’主路由，后面的路由可以跟正则表达式，如：'/ab?cd', 匹配'/abcd','acd'的路由
 app.get('/', function(req, res) {
 
 //req.query返回浏览器请求表单的 '？'后面的json文件，可以用.find找出？find=xxx，中xxx(字符串)
